@@ -1,0 +1,25 @@
+name: PR verify
+
+env:
+  AzureWebApp: my-app-name
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Pr Verify
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
