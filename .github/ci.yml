@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-  branches: [main]
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,7 +23,7 @@ jobs:
          run: dotnet build --configuration Release
 
        - name: DotNet publish
-         run: dotnet publish src\GitHubActionsDotNet.Api/GitHubActionsDotNet.Api.csproj --configuration Release -o artifacts
+         run: dotnet publish src/GitHubActionsDotNet.Api/GitHubActionsDotNet.Api.csproj --configuration Release -o artifacts
 
 
 
